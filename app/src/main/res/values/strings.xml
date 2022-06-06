@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">SurgeGym</string>
+
+    <string-array name="Gender">
+        <item>Gender:</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+        <item>Prefer Not to Say</item>
+    </string-array>
+
+    <string-array name="Province">
+        <item>Province:</item>
+        <item>AB</item>
+        <item>BC</item>
+        <item>MB</item>
+        <item>NB</item>
+        <item>NL</item>
+        <item>NT</item>
+        <item>NS</item>
+        <item>NU</item>
+        <item>ON</item>
+        <item>PE</item>
+        <item>QC</item>
+        <item>SK</item>
+        <item>YT</item>
+    </string-array>
+
+    <string-array name="Packages">
+        <item>Packages:</item>
+        <item>Platinum Package</item>
+        <item>Premium Package</item>
+        <item>Basic Package</item>
+    </string-array>
+
+    <string-array name="Locations">
+        <item>Surge Gym DDO</item>
+        <item>Surge Gym Verdun</item>
+        <item>Surge Gym St-Catherine</item>
+        <item>Surge Gym St-Laurent</item>
+    </string-array>
+
+</resources>
