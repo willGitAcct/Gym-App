@@ -11,16 +11,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.example.surgegym.databinding.ActivityMainBinding;
+import com.example.surgegym.databinding.ActivityMainpageBinding;
 
-public class Main extends AppCompatActivity {
+public class MainPage extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    ActivityMainpageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainpageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
 

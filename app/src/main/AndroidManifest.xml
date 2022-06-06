@@ -29,7 +29,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Main"
+            android:name=".MainPage"
             android:exported="false" />
         <activity
             android:name=".LandingPage"
