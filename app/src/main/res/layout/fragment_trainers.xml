@@ -5,12 +5,36 @@
     android:layout_height="match_parent"
     tools:context=".TrainersFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="379dp"
+        android:layout_height="34dp"
+        android:text="Select Trainer"
+        android:textSize="20dp"
+        />
+
+    <Spinner
+        android:id="@+id/trainerSpinner"
+        android:layout_width="385sp"
         android:layout_height="wrap_content"
-        android:text="Trainers Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="center"/>
+        android:layout_marginTop="40dp"
+        android:tooltipText="Select Trainer" />
+
+    <ImageView
+        android:id="@+id/spinnerImgs"
+        android:layout_width="225dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginLeft="100dp"/>
+
+    <TextView
+        android:id="@+id/trainerDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:text=""
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_marginTop="400dp"
+        />
+
 
 </FrameLayout>
