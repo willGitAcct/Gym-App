@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -85,6 +86,8 @@ public class MainPage extends AppCompatActivity {
                 break;
 
             case R.id.logoutNav:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(this, LandingPage.class));
                 break;
         }
 
@@ -97,4 +100,5 @@ public class MainPage extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
 }

@@ -20,6 +20,22 @@
         android:layout_gravity="center_horizontal"
         />
 
+    <TextView
+        android:id="@+id/class1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"/>
+    <TextView
+        android:id="@+id/class2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="460dp"/>
+    <TextView
+        android:id="@+id/class3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="480dp"/>
+
 
 </FrameLayout>
 
