@@ -18,16 +18,8 @@ public class Password extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     public void passwordBack(View view){
-        //changed it so that if the user is logged in, they'll get sent back to mainmenu, otherwise
-        //if no one is logged in, they get sent back to homepage
-        FirebaseUser user =mAuth.getInstance().getCurrentUser();
-
-        if(user==null) {
-            Intent login = new Intent(Password.this, LandingPage.class);
-            startActivity(login);
-        } else{
-            startActivity(new Intent(getApplicationContext(), LandingPage.class));
-        }
+        Intent login = new Intent(Password.this, LandingPage.class);
+        startActivity(login);
     }
 
     public void changePassword(View view){

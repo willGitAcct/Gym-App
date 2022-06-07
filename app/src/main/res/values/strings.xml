@@ -41,10 +41,31 @@
     </string-array>
 
     <string-array name="Trainers">
-        <item></item>
+        <item>Trainers:</item>
         <item>Joey Maxwell</item>
         <item>Melissa Villasenor</item>
         <item>Adin Ashby</item>
+    </string-array>
+
+    <string-array name="Joey">
+        <item>Surge Gym DDO: June 10 @ 16h00 - 18h00</item>
+        <item>Surge Gym DDO: June 11 @ 16h00 - 18h00</item>
+        <item>Surge Gym DDO: June 12 @ 16h00 - 18h00</item>
+        <item>Surge Gym DDO: June 13 @ 16h00 - 18h00</item>
+    </string-array>
+
+    <string-array name="Melissa">
+        <item>Surge Gym St Catherine: June 10 @ 10h00 - 12h00</item>
+        <item>Surge Gym St Catherine: June 11 @ 10h00 - 12h00</item>
+        <item>Surge Gym St Catherine: June 12 @ 10h00 - 12h00</item>
+        <item>Surge Gym St Catherine: June 13 @ 10h00 - 12h00</item>
+    </string-array>
+
+    <string-array name="Adin">
+        <item>Surge Gym Verdun: June 10 @ 18h00 - 20h00</item>
+        <item>Surge Gym Verdun: June 11 @ 18h00 - 20h00</item>
+        <item>Surge Gym Verdun: June 12 @ 18h00 - 20h00</item>
+        <item>Surge Gym Verdun: June 13 @ 18h00 - 20h00</item>
     </string-array>
 
 </resources>

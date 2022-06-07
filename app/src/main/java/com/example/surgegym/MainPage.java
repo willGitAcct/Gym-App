@@ -41,26 +41,21 @@ public class MainPage extends AppCompatActivity {
             switch (item.getItemId()){
                 case R.id.homeNav:
                     replaceFragment(new HomeFragment());
-                    ((ImageView) findViewById(R.id.idIVQrCode)).setVisibility(View.VISIBLE);
                     break;
 
                 case R.id.classesNav:
-                    ((ImageView) findViewById(R.id.idIVQrCode)).setVisibility(View.INVISIBLE);
                     replaceFragment(new ClassesFragment());
                     break;
 
                 case R.id.locationsNav:
-                    ((ImageView) findViewById(R.id.idIVQrCode)).setVisibility(View.INVISIBLE);
                     replaceFragment(new MapsFragment());
                     break;
 
                 case R.id.trainersNav:
-                    ((ImageView) findViewById(R.id.idIVQrCode)).setVisibility(View.INVISIBLE);
                     replaceFragment(new TrainersFragment());
                     break;
 
                 case R.id.partnersNav:
-                    ((ImageView) findViewById(R.id.idIVQrCode)).setVisibility(View.INVISIBLE);
                     replaceFragment((new PartnersFragment()));
                     break;
             }
@@ -68,25 +63,7 @@ public class MainPage extends AppCompatActivity {
             return true;
         });
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String userLoggedin = user.getUid().toString();
 
-        QRCodeWriter writer = new QRCodeWriter();
-        try {
-            BitMatrix bitMatrix = writer.encode(userLoggedin , BarcodeFormat.QR_CODE, 512, 512);
-            int width = bitMatrix.getWidth();
-            int height = bitMatrix.getHeight();
-            Bitmap bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-            for (int x = 0; x < width; x++) {
-                for (int y = 0; y < height; y++) {
-                    bmp.setPixel(x, y, bitMatrix.get(x, y) ? Color.BLACK : Color.WHITE);
-                }
-            }
-            ((ImageView) findViewById(R.id.idIVQrCode)).setImageBitmap(bmp);
-
-        } catch (WriterException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -100,12 +77,10 @@ public class MainPage extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.paymentNav:
-                ((ImageView) findViewById(R.id.idIVQrCode)).setVisibility(View.INVISIBLE);
                 replaceFragment(new PaymentFragment());
                 break;
 
             case R.id.passwordNav:
-                ((ImageView) findViewById(R.id.idIVQrCode)).setVisibility(View.INVISIBLE);
                 replaceFragment(new PasswordFragment());
                 break;
 

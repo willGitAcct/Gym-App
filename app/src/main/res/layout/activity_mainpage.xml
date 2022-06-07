@@ -17,14 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/idIVQrCode"
-            android:layout_width="300sp"
-            android:layout_height="300sp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="120sp"
-            android:layout_gravity="center_horizontal">
-        </ImageView>
+
 
 
     </FrameLayout>

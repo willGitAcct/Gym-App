@@ -6,35 +6,63 @@
     tools:context=".TrainersFragment">
 
     <TextView
-        android:layout_width="379dp"
-        android:layout_height="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Select Trainer"
-        android:textSize="20dp"
+        android:textSize="35dp"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         />
 
     <Spinner
         android:id="@+id/trainerSpinner"
-        android:layout_width="385sp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_width="225dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="60dp"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
         android:tooltipText="Select Trainer" />
 
     <ImageView
         android:id="@+id/spinnerImgs"
         android:layout_width="225dp"
         android:layout_height="225dp"
-        android:layout_marginTop="125dp"
-        android:layout_marginLeft="100dp"/>
+        android:layout_marginTop="110dp"
+        android:layout_gravity="center_horizontal"
+        />
 
     <TextView
         android:id="@+id/trainerDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text=""
         android:textSize="20dp"
         android:textAlignment="center"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="350dp"
+        android:textColor="@color/white"
         />
+
+    <Spinner
+        android:id="@+id/trainersDateSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="450dp"
+        android:tooltipText="Select Trainer"
+        />
+
+
+    <Button
+        android:id="@+id/bookBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:text="Book Now"
+        android:layout_marginTop="500dp"/>
 
 
 </FrameLayout>
