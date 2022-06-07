@@ -129,7 +129,7 @@ public class SignUp2 extends AppCompatActivity {
         spinnerPackage.setAdapter(adapter);
 
         //Commented out to avoid crashing
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
     }
 }

@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent mainMenu = new Intent(Login.this, LandingPage.class);
+                    Intent mainMenu = new Intent(Login.this, MainPage.class);
                     startActivity(mainMenu);
                 }else{
                     Toast.makeText(Login.this, "Error, please check your credentials", Toast.LENGTH_SHORT).show();
@@ -70,8 +70,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //Commented out to avoid crash
-        //mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
     }
 }

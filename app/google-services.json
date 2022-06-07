@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "164177517014",
+    "project_id": "surgegym-b209c",
+    "storage_bucket": "surgegym-b209c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164177517014:android:b9a13cceac7c4b7cf2ac77",
+        "android_client_info": {
+          "package_name": "com.example.surgegym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164177517014-8lcp40ugu04frqsr8g888t0dt8nla56h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz5MjhfZej47fuXrpEV0z7qKwHIPlA6uk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "164177517014-8lcp40ugu04frqsr8g888t0dt8nla56h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
