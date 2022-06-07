@@ -57,9 +57,7 @@ public class Password extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
-
-        //Commented out to avoid crash
-        //mAuth= FirebaseAuth.getInstance();
+        mAuth= FirebaseAuth.getInstance();
 
     }
 }

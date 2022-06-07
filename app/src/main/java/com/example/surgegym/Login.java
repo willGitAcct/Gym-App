@@ -29,6 +29,16 @@ public class Login extends AppCompatActivity {
     public void goToPassChange(View view){
         startActivity(new Intent(getApplicationContext(), Password.class));
     }
+
+    public void googleLogin(View view){
+
+    }
+
+    public void facebookLogin(View view){
+
+    }
+
+
     public void login(View view){
 
 

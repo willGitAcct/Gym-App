@@ -23,7 +23,5 @@ public class LandingPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landingpage);
 
-        //Intent intent = new Intent(LandingPage.this, Main.class);
-        //startActivity(intent);
     }
 }
