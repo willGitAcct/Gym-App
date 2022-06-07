@@ -7,10 +7,37 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="center"/>
+        android:layout_marginStart="92sp"
+        android:layout_marginTop="6sp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Welcome Member"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/qrCodeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60sp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Your QR Code:"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450sp"
+        android:layout_marginBottom="100sp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Scan your Qr code at any Surge Gym!"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
 
 </FrameLayout>
