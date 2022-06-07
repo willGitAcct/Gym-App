@@ -45,15 +45,15 @@ public class TrainersFragment extends Fragment {
                     switch (position){
                         case 1:
                             imgs.setImageResource(R.drawable.trainer_joey);
-                            trainerDescText.setText("Specializing in cardio training\n15 years experience\n");
+                            trainerDescText.setText("Specializing in cardio training. 15 years experience\nDDO Branch");
                             break;
                         case 2:
                             imgs.setImageResource(R.drawable.trainer_mel);
-                            trainerDescText.setText("Specializing in strength training.\n5 years experience\n");
+                            trainerDescText.setText("Specializing in strength training. 5 years experience\nSt.Catherine Branch");
                             break;
                         case 3:
                             imgs.setImageResource(R.drawable.trainer_adin);
-                            trainerDescText.setText("Specializing in endurance and strength training.\n10 years experience\n");
+                            trainerDescText.setText("Specializing in endurance and strength training.\n10 years experience\nWest Island Branch");
                             break;
                     }
             }

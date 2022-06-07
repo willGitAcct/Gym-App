@@ -5,12 +5,27 @@
     android:layout_height="match_parent"
     tools:context=".ClassesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="35dp"/>
+
+    <Button
+        android:id="@+id/checkClasses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Classes Fragment"
-        android:textSize="26dp"
-        android:layout_gravity="center"/>
+        android:text="View Classes"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="150dp"
+        />
+
 
 </FrameLayout>
+
+
+
+
+
