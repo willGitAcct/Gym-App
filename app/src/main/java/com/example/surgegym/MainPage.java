@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.surgegym.databinding.ActivityMainpageBinding;
 import com.google.android.gms.maps.MapView;
@@ -86,6 +87,7 @@ public class MainPage extends AppCompatActivity {
                 break;
 
             case R.id.logoutNav:
+                Toast.makeText(this, "Signing out..", Toast.LENGTH_SHORT).show();
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(this, LandingPage.class));
                 break;
