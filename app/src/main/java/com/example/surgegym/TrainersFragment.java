@@ -7,58 +7,64 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TrainersFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class TrainersFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public TrainersFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TrainersFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static TrainersFragment newInstance(String param1, String param2) {
-        TrainersFragment fragment = new TrainersFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private ImageView imgs;
+    private TextView trainerDescText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trainers, container, false);
+        View view = inflater.inflate(R.layout.fragment_trainers, container, false);
+        Spinner trainerSpinner = view.findViewById(R.id.trainerSpinner);
+        //Spinner bookPackage = view.findViewById(R.id.bookSpinner);
+        trainerDescText = (TextView) view.findViewById(R.id.trainerDesc);
+        imgs = (ImageView) view.findViewById(R.id.spinnerImgs);
+        ArrayAdapter<CharSequence> trainerAdapter= ArrayAdapter.createFromResource(this.getActivity(), R.array.Trainers, android.R.layout.simple_spinner_item);
+        trainerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        trainerSpinner.setAdapter(trainerAdapter);
+
+        //changing the picture and text based on selection
+        trainerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    int position = trainerSpinner.getSelectedItemPosition();
+                    switch (position){
+                        case 1:
+                            imgs.setImageResource(R.drawable.trainer_joey);
+                            trainerDescText.setText("Specializing in cardio training\n15 years experience\n");
+                            break;
+                        case 2:
+                            imgs.setImageResource(R.drawable.trainer_mel);
+                            trainerDescText.setText("Specializing in strength training.\n5 years experience\n");
+                            break;
+                        case 3:
+                            imgs.setImageResource(R.drawable.trainer_adin);
+                            trainerDescText.setText("Specializing in endurance and strength training.\n10 years experience\n");
+                            break;
+                    }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        }); // end listener
+
+
+        return view;
     }
 }

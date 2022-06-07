@@ -40,4 +40,11 @@
         <item>Surge Gym St-Laurent</item>
     </string-array>
 
+    <string-array name="Trainers">
+        <item></item>
+        <item>Joey Maxwell</item>
+        <item>Melissa Villasenor</item>
+        <item>Adin Ashby</item>
+    </string-array>
+
 </resources>
