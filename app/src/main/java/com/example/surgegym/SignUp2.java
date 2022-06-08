@@ -2,8 +2,13 @@ package com.example.surgegym;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -68,6 +73,15 @@ public class SignUp2 extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(SignUp2.this, "Registration successful!", Toast.LENGTH_LONG).show();
+
+                                                NotificationCompat.Builder builder = new NotificationCompat.Builder(SignUp2.this, "My Notification");
+                                                builder.setContentTitle("Registration Successful");
+                                                builder.setContentText("Please use your email and your temporary password to login.");
+                                                builder.setSmallIcon(R.drawable.ic_launcher_background);
+                                                builder.setAutoCancel(true);
+                                                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(SignUp2.this);
+                                                managerCompat.notify(1, builder.build());
+
                                                 Intent intent = new Intent(SignUp2.this, Confirmation.class);
                                                 intent.putExtra("MemberNum", memberString);
                                                 intent.putExtra("TempPass", passwordString);
@@ -91,6 +105,12 @@ public class SignUp2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up2);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
         Intent intent = getIntent();
         stringFirstName = intent.getStringExtra("FNAME");

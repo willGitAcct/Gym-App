@@ -2,8 +2,13 @@ package com.example.surgegym;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -37,6 +42,14 @@ public class Password extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Password.this, "Password Reset Link Sent To Your Email", Toast.LENGTH_LONG).show();
+
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(Password.this, "My Notification");
+                    builder.setContentTitle("Password Change Email Sent");
+                    builder.setContentText("Please check your email");
+                    builder.setSmallIcon(R.drawable.ic_launcher_background);
+                    builder.setAutoCancel(true);
+                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(Password.this);
+                    managerCompat.notify(1, builder.build());
                 }
                 else{
                     Toast.makeText(Password.this, "Try again; possibly an incorrect email input.", Toast.LENGTH_SHORT).show();
@@ -50,6 +63,12 @@ public class Password extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
         mAuth= FirebaseAuth.getInstance();
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
     }
 }
