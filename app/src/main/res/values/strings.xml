@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">SurgeGym</string>
 
+    <string name="facebook_app_id">318927030434667</string>
+    <string name="fb_login_protocol_scheme">fb318927030434667</string>
+    <string name="facebook_client_token">a07068d512751ee8eee9761d90bc341a</string>
+
+
     <string-array name="Gender">
         <item>Gender:</item>
         <item>Male</item>

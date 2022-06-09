@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,8 +15,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.surgegym.databinding.ActivityMainpageBinding;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.maps.MapView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +32,7 @@ import java.util.Map;
 public class MainPage extends AppCompatActivity {
 
     ActivityMainpageBinding binding;
+    //private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +89,10 @@ public class MainPage extends AppCompatActivity {
                 break;
 
             case R.id.logoutNav:
+                Toast.makeText(this, "Signing out..", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                LoginManager.getInstance().logOut();//works! woo
+                startActivity(new Intent(this, LandingPage.class));
                 break;
         }
 
@@ -97,4 +105,5 @@ public class MainPage extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
+
 }
