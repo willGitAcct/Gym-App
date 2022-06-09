@@ -44,23 +44,23 @@ public class ClassesFragment extends Fragment {
         }else if (day==Calendar.TUESDAY){
             classes1.setText("15:00 - 16:00 : Cardio Kickboxing");
             classes2.setText("16:00 - 17:00 : Group Cycling Jam");
-            classes3.setText("Tues");
+            classes3.setText("17:00 - 18:00 : Evening Kickboxing");
         }else if (day==Calendar.WEDNESDAY){
             classes1.setText("14:00 - 15:00 : Group Jogging");
             classes2.setText("16:00 - 17:00 : Group Cycling Jam");
-            classes3.setText("weds");
+            classes3.setText("18:00 - 20:00 : Live Zumba Dance!");
         }else if (day==Calendar.THURSDAY){
             classes1.setText("13:00 - 14:00 : Lunctime Layups");
             classes2.setText("16:00 - 17:00 : Group Cycling Jam");
-            classes3.setText("Thursday");
+            classes3.setText("18:00 - 19:00 : Cardio Kickboxing");
         }else if (day==Calendar.FRIDAY){
             classes1.setText("09:00 - 10:30 : Breakfast Burpees!");
             classes2.setText("16:00 - 17:00 : Group Cycling Jam");
-            classes3.setText("Fri");
+            classes3.setText("18:00 - 19:00 : Crazy Cardio!");
         }else if (day==Calendar.SATURDAY){
             classes1.setText("09:00 - 10:30 : Breakfast Burpees!");
-            classes2.setText("16:00 - 17:00 : Group Cycling Jam");
-            classes3.setText("Sat");
+            classes2.setText("16:00 - 17:00 : Group Cardio Break");
+            classes3.setText("");
         }else if (day==Calendar.SUNDAY){
             classes1.setText("10:00 - 12:00 : Live Zumba Dance!");
             classes2.setText("");

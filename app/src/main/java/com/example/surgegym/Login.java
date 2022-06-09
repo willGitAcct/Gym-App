@@ -7,7 +7,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -17,7 +19,10 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,15 +33,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
 
 public class Login extends AppCompatActivity {
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
     FirebaseAuth mAuth;
     CallbackManager callbackManager;
     FirebaseAuth.AuthStateListener authStateListener;
     AccessTokenTracker accessTokenTracker;
     LoginButton fblogin;
+    ImageButton google;
+
     public void back(View view){
         Intent back = new Intent(Login.this, LandingPage.class);
         startActivity(back);
@@ -51,8 +61,9 @@ public class Login extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), Password.class));
     }
 
-    public void googleLogin(View view){
-
+    public void googleLogin(){
+        Intent mainMenu = gsc.getSignInIntent();
+        startActivityForResult(mainMenu, 1000);
     }
 
     public void facebookLogin(View view){
@@ -102,6 +113,20 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+
+        //google stuff
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("164177517014-8lcp40ugu04frqsr8g888t0dt8nla56h.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(this, gso);
+        google = (ImageButton) findViewById(R.id.googleBtn);
+        google.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                googleLogin();
+            }
+        });
 
         //fb stuff
         FacebookSdk.sdkInitialize(getApplicationContext());
@@ -166,15 +191,39 @@ public class Login extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode,Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == 1000){
-//            Task<GoogleSignInAccount> Task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//            try {
-//                Task.getResult(ApiException.class);//some warning
-//                navigateToHome();
-//            } catch (ApiException e) {
-//                //e.printStackTrace();
-//                Toast.makeText(this, "Something went wrong..", Toast.LENGTH_SHORT).show();
-//            }
+        if(requestCode == 1000){
+            Task<GoogleSignInAccount> Task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                //
+                GoogleSignInAccount account = Task.getResult(ApiException.class);
+                firebaseAuthGoog(account);
+                Toast.makeText(this, "Signing in w/ Google..", Toast.LENGTH_SHORT).show();
+                //navigateToHome();
+            } catch (ApiException e) {
+                //e.printStackTrace();
+                Toast.makeText(this, "Something went wrong..", Toast.LENGTH_SHORT).show();
+            }
         }
-    //}// end activityresult
+    }// end activityresult
+
+    private void firebaseAuthGoog(GoogleSignInAccount account) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        mAuth.signInWithCredential(credential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Toast.makeText(Login.this, "Signing in ..", Toast.LENGTH_SHORT).show();
+                    //googleLogin();
+                    startActivity(new Intent(getApplicationContext(), MainPage.class));
+
+                } else {
+                    Toast.makeText(Login.this, "Auth failed", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });// end firebaseauth
+
+    }
+
+
 }
