@@ -81,6 +81,13 @@ public class MainPage extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this, "Signing out..", Toast.LENGTH_SHORT).show();
+        signOut();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_bar, menu);

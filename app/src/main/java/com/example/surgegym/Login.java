@@ -213,7 +213,6 @@ public class Login extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Toast.makeText(Login.this, "Signing in ..", Toast.LENGTH_SHORT).show();
                     //googleLogin();
                     startActivity(new Intent(getApplicationContext(), MainPage.class));
 
