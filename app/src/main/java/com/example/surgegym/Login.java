@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -44,7 +45,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth.AuthStateListener authStateListener;
     AccessTokenTracker accessTokenTracker;
     LoginButton fblogin;
-    Button google;
+    ImageButton google;
 
     public void back(View view){
         Intent back = new Intent(Login.this, LandingPage.class);
@@ -119,7 +120,7 @@ public class Login extends AppCompatActivity {
                 .requestEmail()
                 .build();
         gsc = GoogleSignIn.getClient(this, gso);
-        google = (Button) findViewById(R.id.googleBtn);
+        google = (ImageButton) findViewById(R.id.googleBtn);
         google.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -223,4 +224,6 @@ public class Login extends AppCompatActivity {
         });// end firebaseauth
 
     }
+
+
 }

@@ -2,6 +2,8 @@ package com.example.surgegym;
 
 import android.os.Bundle;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class TrainersFragment extends Fragment {
@@ -44,6 +47,18 @@ public class TrainersFragment extends Fragment {
         Button bookBtn = (Button) view.findViewById(R.id.bookBtn);
         trainerDateSpinner.setVisibility(View.INVISIBLE);
         bookBtn.setVisibility(View.INVISIBLE);
+        bookBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "My Notification");
+                builder.setContentTitle("Successfully Booked");
+                builder.setContentText(trainerSpinner.getSelectedItem().toString() + " @ " + trainerDateSpinner.getSelectedItem().toString());
+                builder.setSmallIcon(R.drawable.ic_launcher_background);
+                builder.setAutoCancel(true);
+                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getActivity());
+                managerCompat.notify(1, builder.build());
+            }
+        });
 
         //changing the picture and text based on selection
         trainerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -89,6 +104,7 @@ public class TrainersFragment extends Fragment {
 
             }
         }); // end listener
+
 
 
         return view;

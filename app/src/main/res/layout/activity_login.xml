@@ -6,29 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-    <Button
+    <ImageButton
         android:id="@+id/googleBtn"
-        android:layout_width="95sp"
-        android:layout_height="40sp"
-        android:text="Google"
+        android:layout_width="80dp"
+        android:layout_height="37dp"
+        android:background="@null"
+        android:src="@drawable/google"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintVertical_bias="0.708" />
 
     <com.facebook.login.widget.LoginButton
 
         android:id="@+id/facebookBtn"
-        android:layout_width="66dp"
-        android:layout_height="35dp"
+        android:layout_width="193dp"
+        android:layout_height="27dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.686"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.696" />
+        app:layout_constraintVertical_bias="0.763" />
 
     <TextView
         android:id="@+id/moreInfo3"
