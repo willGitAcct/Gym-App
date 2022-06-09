@@ -19,7 +19,12 @@ import android.widget.Toast;
 
 import com.example.surgegym.databinding.ActivityMainpageBinding;
 import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.zxing.BarcodeFormat;
@@ -30,7 +35,8 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import java.util.Map;
 
 public class MainPage extends AppCompatActivity {
-
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
     ActivityMainpageBinding binding;
     //private FirebaseAuth mAuth;
 
@@ -40,7 +46,11 @@ public class MainPage extends AppCompatActivity {
         binding = ActivityMainpageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
-
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("164177517014-8lcp40ugu04frqsr8g888t0dt8nla56h.apps.googleusercontent.com")
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(this, gso);
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
                 case R.id.homeNav:
@@ -90,9 +100,10 @@ public class MainPage extends AppCompatActivity {
 
             case R.id.logoutNav:
                 Toast.makeText(this, "Signing out..", Toast.LENGTH_SHORT).show();
-                FirebaseAuth.getInstance().signOut();
-                LoginManager.getInstance().logOut();//works! woo
-                startActivity(new Intent(this, LandingPage.class));
+                //FirebaseAuth.getInstance().signOut();
+//                LoginManager.getInstance().logOut();//works! woo
+//                startActivity(new Intent(this, LandingPage.class));
+                signOut();
                 break;
         }
 
@@ -104,6 +115,20 @@ public class MainPage extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
+    }
+
+    void signOut(){
+        gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                finish();
+                FirebaseAuth.getInstance().signOut();
+
+                //mAuth.signOut();
+                LoginManager.getInstance().logOut();//works! woo
+                startActivity(new Intent(getApplicationContext(), LandingPage.class));
+            }
+        });
     }
 
 }
