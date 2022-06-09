@@ -55,7 +55,7 @@ public class SignUp2 extends AppCompatActivity {
 
         int passwordmax = 9999999;
         int passwordmin = 1000000;
-        int password_number = (int)Math.floor(Math.random()*(passwordmax-passwordmin+1)+passwordmin); //random username
+        int password_number = (int)Math.floor(Math.random()*(passwordmax-passwordmin+1)+passwordmin);
         String passwordString = Integer.toString(password_number);
 
         //creating the account on firebase here
