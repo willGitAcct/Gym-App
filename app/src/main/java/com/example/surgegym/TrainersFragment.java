@@ -1,5 +1,9 @@
 package com.example.surgegym;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.core.app.NotificationCompat;
@@ -22,6 +26,7 @@ public class TrainersFragment extends Fragment {
 
     private ImageView imgs;
     private TextView trainerDescText;
+    Context context;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,12 @@ public class TrainersFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_trainers, container, false)
                 ;
         Spinner trainerSpinner = view.findViewById(R.id.trainerSpinner);
+        context = getContext();
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager manager = context.getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
 
         trainerDescText = (TextView) view.findViewById(R.id.trainerDesc);
         imgs = (ImageView) view.findViewById(R.id.spinnerImgs);
@@ -47,9 +58,11 @@ public class TrainersFragment extends Fragment {
         Button bookBtn = (Button) view.findViewById(R.id.bookBtn);
         trainerDateSpinner.setVisibility(View.INVISIBLE);
         bookBtn.setVisibility(View.INVISIBLE);
+
         bookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(getActivity(), "test test test", Toast.LENGTH_SHORT).show();
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "My Notification");
                 builder.setContentTitle("Successfully Booked");
                 builder.setContentText(trainerSpinner.getSelectedItem().toString() + " @ " + trainerDateSpinner.getSelectedItem().toString());
@@ -60,18 +73,18 @@ public class TrainersFragment extends Fragment {
             }
         });
 
-        bookBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "My Notification");
-                builder.setContentTitle("Successfully Booked");
-                builder.setContentText(trainerSpinner.getSelectedItem().toString() + " @ " + trainerDateSpinner.getSelectedItem().toString());
-                builder.setSmallIcon(R.drawable.ic_launcher_background);
-                builder.setAutoCancel(true);
-                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getActivity());
-                managerCompat.notify(1, builder.build());
-            }
-        });
+//        bookBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "My Notification");
+//                builder.setContentTitle("Successfully Booked");
+//                builder.setContentText(trainerSpinner.getSelectedItem().toString() + " @ " + trainerDateSpinner.getSelectedItem().toString());
+//                builder.setSmallIcon(R.drawable.ic_launcher_background);
+//                builder.setAutoCancel(true);
+//                NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getActivity());
+//                managerCompat.notify(1, builder.build());
+//            }
+//        });
 
         //changing the picture and text based on selection
         trainerSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
